@@ -32,4 +32,9 @@ public class PersonController {
     public void updatePerson(@PathVariable int index, @RequestBody String name) {
         people.set(index, name);
     }
+
+    @DeleteMapping("/people/{index}")
+    public void deletePerson(@PathVariable int index) {
+        people.remove(index);
+    }
 }
