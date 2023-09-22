@@ -10,8 +10,7 @@ import java.util.List;
 @RestController
 public class PersonController {
 
-    private final ArrayList<String> people = new ArrayList<>(Arrays.asList("Jurgis", "Antanas",
-            "Aloyzas", "Martynas"));
+    private final ArrayList<String> people = new ArrayList<>(Arrays.asList("Jurgis", "Antanas", "Aloyzas", "Martynas"));
 
     @GetMapping("/people")
     public List<String> getPeople() {
