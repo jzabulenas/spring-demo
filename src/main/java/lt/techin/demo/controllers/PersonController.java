@@ -16,7 +16,6 @@ public class PersonController {
 
     @Autowired
     private PersonRepository personRepository;
-//    private JpaRepository<Person, Integer> jpaRepository;
 
 //    @GetMapping("/people")
 //    public List<String> getPeople() {
