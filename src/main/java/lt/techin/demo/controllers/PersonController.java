@@ -3,6 +3,7 @@ package lt.techin.demo.controllers;
 import lt.techin.demo.entities.Person;
 import lt.techin.demo.repositories.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,6 +16,7 @@ public class PersonController {
 
     @Autowired
     private PersonRepository personRepository;
+//    private JpaRepository<Person, Integer> jpaRepository;
 
 //    @GetMapping("/people")
 //    public List<String> getPeople() {
