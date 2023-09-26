@@ -10,9 +10,6 @@ public class PhoneNumber {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String phoneNumber;
-    @ManyToOne
-    @JoinColumn(name = "Person_id")
-    private Person person;
 
     public String getPhoneNumber() {
         return phoneNumber;
@@ -20,13 +17,5 @@ public class PhoneNumber {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
-    }
-
-    public Person getPerson() {
-        return person;
-    }
-
-    public void setPerson(Person person) {
-        this.person = person;
     }
 }
