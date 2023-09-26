@@ -18,4 +18,12 @@ public class PhoneNumber {
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
+
+    @Override
+    public String toString() {
+        return "PhoneNumber{" +
+                "id=" + id +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                '}';
+    }
 }
