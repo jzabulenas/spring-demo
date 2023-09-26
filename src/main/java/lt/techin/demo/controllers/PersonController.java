@@ -11,8 +11,12 @@ import java.util.Optional;
 @RestController
 public class PersonController {
 
+    private final PersonRepository personRepository;
+
     @Autowired
-    private PersonRepository personRepository;
+    public PersonController(PersonRepository personRepository) {
+        this.personRepository = personRepository;
+    }
 
     @GetMapping("/people")
     public List<Person> getPeople() {
