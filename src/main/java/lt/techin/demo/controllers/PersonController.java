@@ -11,8 +11,12 @@ import java.util.Optional;
 @RestController
 public class PersonController {
 
+    private final PersonRepository personRepository;
+
     @Autowired
-    private PersonRepository personRepository;
+    public PersonController(PersonRepository personRepository) {
+        this.personRepository = personRepository;
+    }
 
     @GetMapping("/people")
     public List<Person> getPeople() {
@@ -31,24 +35,27 @@ public class PersonController {
 
     @PutMapping("/people/{id}")
     public Person updatePerson(@PathVariable int id, @RequestBody Person updatedPerson) {
-//        Optional<Person> personFromDb = personRepository.findById(id);
-//
-//        if (personFromDb.isPresent()) {
-//            Person person = personFromDb.get();
-//
-//            person.setFirstName(updatedPerson.getFirstName());
-//            person.setLastName(updatedPerson.getLastName());
-//
-//            return personRepository.save(person);
-//        }
-//
-//        return personRepository.save(updatedPerson);
+        Optional<Person> personFromDb = personRepository.findById(id);
+
+        if (personFromDb.isPresent()) {
+            Person person = personFromDb.get();
+
+            if (updatedPerson.getFirstName() != null) {
+                person.setFirstName(updatedPerson.getFirstName());
+            }
+
+            if (updatedPerson.getLastName() != null) {
+                person.setLastName(updatedPerson.getLastName());
+            }
+
+            return personRepository.save(person);
+        }
 
         return personRepository.save(updatedPerson);
     }
-//
-//    @DeleteMapping("/people/{index}")
-//    public void deletePerson(@PathVariable int index) {
-//        people.remove(index);
-//    }
+
+    @DeleteMapping("/people/{id}")
+    public void deletePerson(@PathVariable int id) {
+        personRepository.deleteById(id);
+    }
 }
