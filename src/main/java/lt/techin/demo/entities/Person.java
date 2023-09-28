@@ -6,6 +6,7 @@ import jakarta.validation.constraints.NotNull;
 
 import javax.annotation.processing.Generated;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "People")
@@ -25,6 +26,14 @@ public class Person {
     @NotNull
     @NotEmpty
     private List<PhoneNumber> phoneNumbers;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "People_groups",
+            joinColumns = @JoinColumn(name = "Person_id"),
+            inverseJoinColumns = @JoinColumn(name = "Group_id")
+    )
+    private List<Group> groups;
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
@@ -52,6 +61,14 @@ public class Person {
 
     public void setPhoneNumbers(List<PhoneNumber> phoneNumbers) {
         this.phoneNumbers = phoneNumbers;
+    }
+
+    public List<Group> getGroups() {
+        return groups;
+    }
+
+    public void setGroups(List<Group> groups) {
+        this.groups = groups;
     }
 
     @Override
