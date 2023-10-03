@@ -11,9 +11,14 @@ public class PhoneNumber {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     @NotNull
     @NotEmpty
     private String phoneNumber;
+
+    public int getId() {
+        return id;
+    }
 
     public String getPhoneNumber() {
         return phoneNumber;
@@ -23,11 +28,4 @@ public class PhoneNumber {
         this.phoneNumber = phoneNumber;
     }
 
-    @Override
-    public String toString() {
-        return "PhoneNumber{" +
-                "id=" + id +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                '}';
-    }
 }
