@@ -12,8 +12,6 @@ public class PhoneNumber {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @NotNull
-    @NotEmpty
     private String phoneNumber;
 
     public int getId() {
